@@ -1,26 +1,28 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
 <nav
   id="navbar"
-  class="flex justify-between items-center p-4 overlay-accent relative bg-jp-waves"
+  class="overlay-accent relative flex items-center justify-between bg-jp-waves p-4"
 >
   <div class="hori-selector"></div>
   <a
     href="/"
     id="navBrand"
-    class="font-extrabold text-white p-2 bg-black/20 block"
-  >Koushinryou</a>
+    class="block bg-black/20 p-2 font-extrabold text-white">Koushinryou</a
+  >
   <div
     id="currentPage"
-    class="text-2xl self-center text-white lg:hidden capitalize"
-  >home</div>
+    class="self-center text-2xl capitalize text-white lg:hidden"
+  >
+    home
+  </div>
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
   <label
     for="menu-toggle"
-    class="lg:hidden px-3 py-2 flex items-center justify-center bg-accent-600 rounded-md"
+    class="flex items-center justify-center rounded-md bg-accent-600 px-3 py-2 lg:hidden"
   >
     <svg
       id="hamburger-icon"
@@ -34,8 +36,7 @@ import { SITE_TITLE } from '../consts';
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M4 6h16M4 12h16m-7 6h7"
-      ></path>
+        d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg>
     <svg
       id="close-icon"
@@ -44,20 +45,17 @@ import { SITE_TITLE } from '../consts';
       viewBox="0 0 24 24"
       stroke-width="2"
       stroke="currentColor"
-      class="h-6 w-6 hidden"
+      class="hidden h-6 w-6"
     >
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M6 18L18 6M6 6l12 12"
-      ></path>
+        d="M6 18L18 6M6 6l12 12"></path>
     </svg>
   </label>
   <div
     id="nav-menu"
-    class="nav-menu hidden absolute lg:relative top-full right-0 w-full lg:w-auto bg-accent-900 lg:bg-transparent z-50 flex flex-col
-    items-end p-10 lg:p-0 [&>a]:min-w-32 [&>a]:rounded-l-full lg:[&>a]:rounded-t-none lg:[&>a]:rounded-b-full
-    [&>a]:capitalize [&>a]:bg-black/50 [&>a]:m-2 lg:[&>a]:m-0 lg:[&>a]:mx-2 [&>a]:bg-repeat"
+    class="nav-menu absolute right-0 top-full z-50 flex hidden w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-2 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
   >
     <a href="/index.html" class="nav-link">
       <span class="font-bold">Home</span>
@@ -139,49 +137,51 @@ import { SITE_TITLE } from '../consts';
   }
 </style>
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".nav-link");
-  const horiSelector = document.querySelector(".hori-selector");
-  const currentPage = document.getElementById("currentPage");
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const horiSelector = document.querySelector(".hori-selector");
+    const currentPage = document.getElementById("currentPage");
 
-  const updateHoriSelector = (element) => {
-    if (window.innerWidth >= 1024 && element) {
-      const { offsetWidth, offsetLeft, offsetTop, offsetHeight } = element;
-      horiSelector.style.width = `\${offsetWidth}px`;
-      horiSelector.style.left = `\${offsetLeft}px`;
-      horiSelector.style.top = `\${offsetTop + offsetHeight}px`;
-    } else {
-      horiSelector.style.width = "0";
-    }
-  };
+    const updateHoriSelector = (element) => {
+      if (window.innerWidth >= 1024 && element) {
+        const { offsetWidth, offsetLeft, offsetTop, offsetHeight } = element;
+        horiSelector.style.width = `\${offsetWidth}px`;
+        horiSelector.style.left = `\${offsetLeft}px`;
+        horiSelector.style.top = `\${offsetTop + offsetHeight}px`;
+      } else {
+        horiSelector.style.width = "0";
+      }
+    };
 
-  const handleResize = () => {
-    const activeLink = document.querySelector(".nav-link.active");
-    updateHoriSelector(activeLink);
-  };
+    const handleResize = () => {
+      const activeLink = document.querySelector(".nav-link.active");
+      updateHoriSelector(activeLink);
+    };
 
-  const handleLinkClick = (link) => {
-    navLinks.forEach((node) => node.classList.remove("active"));
-    link.classList.add("active");
-    updateHoriSelector(link);
-  };
+    const handleLinkClick = (link) => {
+      navLinks.forEach((node) => node.classList.remove("active"));
+      link.classList.add("active");
+      updateHoriSelector(link);
+    };
 
-  const setPageName = () => {
-    const path = window.location.pathname;
-    let currentPageName = path.substring(path.lastIndexOf("/") + 1).replace(".html", "").toLowerCase();
-    if (currentPageName === "index") {
-      currentPageName = "home";
-    }
-    currentPage.textContent = currentPageName || "home";
-  };
+    const setPageName = () => {
+      const path = window.location.pathname;
+      let currentPageName = path
+        .substring(path.lastIndexOf("/") + 1)
+        .replace(".html", "")
+        .toLowerCase();
+      if (currentPageName === "index") {
+        currentPageName = "home";
+      }
+      currentPage.textContent = currentPageName || "home";
+    };
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => handleLinkClick(link));
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => handleLinkClick(link));
+    });
+
+    window.addEventListener("resize", handleResize);
+    setPageName();
+    handleResize();
   });
-
-  window.addEventListener("resize", handleResize);
-  setPageName();
-  handleResize();
-});
-
 </script>

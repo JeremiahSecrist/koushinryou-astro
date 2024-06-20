@@ -40,7 +40,7 @@
             runHook postInstall
           '';
 
-          npmDepsHash = "sha256-mFt1xpGwj99j0kzEqR3ZHS/+e8DhqBjVf2lHEtOv0dA=";
+          npmDepsHash = "sha256-l3MilpOFxPo72KhMaIkWjOSkq94L6kpU0u9pXfXhRPU=";
         };
       });
       # Development environments

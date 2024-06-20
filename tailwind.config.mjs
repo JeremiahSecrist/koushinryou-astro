@@ -11,7 +11,7 @@ export default {
       backgroundImage: {
         "jp-waves": "url('/assets/pattern.svg')",
       },
-      colors: { 
+      colors: {
         text: {
           50: "oklab(96.12% 0.000 0.00)",
           100: "oklab(92.49% 0.000 0.00)",
