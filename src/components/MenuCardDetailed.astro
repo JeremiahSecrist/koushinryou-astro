@@ -1,0 +1,43 @@
+--- 
+// arrow-uturn-left
+import ArrowsPointingOut from 'astro-heroicons/outline/ArrowsPointingOut.astro';
+import ArrowUturnLeft from 'astro-heroicons/outline/ArrowUturnLeft.astro';
+const { 
+    url="images/gochuSaladBowl.png",
+    spiceLevel = 3,
+    itemNameJp = "ペッパーサラダペッパーサラダ",
+    itemNameEn = "Gochu Salad", 
+    itemDescriptionEn = "Homemade vanilla bean whipped cream & chocolate cookie pieces sprinkled with matcha, stuffed in Japanese milk bread \"shokupan\".",
+    itemDescriptionJp = "自家製バニラビーンズ・ホイップクリームと抹茶をまぶしたチョコレート・クッキーを、日本のミルクパン「ショクパン」に詰めたもの。",
+    itemPrice = "$6.99",
+    itemLikes = 2,
+    inStock = false,
+    special = true,
+} = Astro.props; 
+---
+<div class="overflow-hidden bg-slate-300 min-h-svh w-svh relative z-0 sm:m-20 sm:min-h-96 sm:rounded-lg sm:shadow-lg">
+  <div class="absolute bg-amber-100 h-64 w-full z-10 shadow-inner sm:w-[50%] sm:h-full">
+    <ArrowUturnLeft class="w-7 h-7 p-1 absolute text-white ml-4 mt-3 left-0 bg-slate-700/50 backdrop-blur-md rounded-lg"/>
+    <ArrowsPointingOut class="w-7 h-7 p-1 absolute text-white mr-4 mt-3 right-0 bg-slate-700/50 backdrop-blur-md rounded-lg"/>
+    <img
+      class="h-full w-full object-cover"
+      src={url}
+      alt="sando image"></div>
+    <div class="absolute overflow-auto scroll-pb-20 mt-60 h-96 w-full z-20 bg-white rounded-xl pt-5 flex justify-center sm:mt-0
+        sm:p-4 sm:right-0 sm:w-[50%] sm:rounded-none snap-y">
+      <div class="snap-start pb-2 h-fit mb-10">
+        <span class="text-lg underline underline-offset-4">{itemNameEn}</span>
+        <div class="mt-2 text-sm flex flex-none flex-wrap gap-x-2 gap-y-2">
+          <span class="h-fit text-green-300 bg-green-700 rounded p-1">{itemPrice}</span>
+          { !inStock && <span class="text-red-300 bg-red-600 rounded p-1 tracking-tight uppercase">out</span>}
+          { special &&  <span class="text-yellow-200 bg-yellow-600 rounded p-1 tracking-tight uppercase">weekly special</span>}
+        </div>
+        <p class="mt-4 max-w-72 max-h-fit outline bg-slate-100/50 outline-slate-500 rounded p-2 indent-4">
+          {itemDescriptionEn}
+          <span class="block mt-2">
+            {itemDescriptionJp}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>

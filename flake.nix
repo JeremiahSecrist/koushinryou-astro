@@ -11,7 +11,7 @@
   };
 
   # Flake outputs that other flakes can use
-  outputs = { self, flake-schemas, nixpkgs }:
+  outputs = inputs: with inputs;
     let
       # Helpers for producing system-specific outputs
       supportedSystems = [ "x86_64-linux" ];
@@ -40,7 +40,7 @@
             runHook postInstall
           '';
 
-          npmDepsHash = "sha256-p3Xj16qQCVW19fki7GjxzAoJRxLta6jy9aJoacUOBX0=";
+          npmDepsHash = "sha256-mFt1xpGwj99j0kzEqR3ZHS/+e8DhqBjVf2lHEtOv0dA=";
         };
       });
       # Development environments
@@ -48,7 +48,7 @@
         default = pkgs.mkShell {
           # Pinned packages available in the environment
           packages = with pkgs; [
-            nodejs-slim_latest
+            nodejs
             nodePackages.yarn
             git
             nixpkgs-fmt
