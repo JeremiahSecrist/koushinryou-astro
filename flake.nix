@@ -23,7 +23,7 @@
       # Schemas tell Nix about the structure of your flake's outputs
       schemas = flake-schemas.schemas;
       packages = forEachSupportedSystem ({ pkgs }: rec {
-        default = koushinryou ;
+        default = koushinryou;
         koushinryou = pkgs.buildNpmPackage {
           pname = "koushinryou";
           version = "0.0.1";
@@ -48,7 +48,7 @@
         default = pkgs.mkShell {
           # Pinned packages available in the environment
           packages = with pkgs; [
-            nodejs-18_x
+            nodejs-slim_latest
             nodePackages.yarn
             git
             nixpkgs-fmt
