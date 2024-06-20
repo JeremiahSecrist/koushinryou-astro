@@ -18,10 +18,33 @@
       forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
         pkgs = import nixpkgs { inherit system; };
       });
-    in {
+    in
+    {
       # Schemas tell Nix about the structure of your flake's outputs
       schemas = flake-schemas.schemas;
+      packages = forEachSupportedSystem ({ pkgs }: {
+        docs = pkgs.buildNpmPackage {
+          pname = "docs";
+          version = "0.1.0";
+          src = ./.;
 
+          buildInputs = [
+            pkgs.vips
+          ];
+
+          nativeBuildInputs = [
+            pkgs.pkg-config
+          ];
+
+          installPhase = ''
+            runHook preInstall
+            cp -pr --reflink=auto dist $out/
+            runHook postInstall
+          '';
+
+          npmDepsHash = "sha256-p3Xj16qQCVW19fki7GjxzAoJRxLta6jy9aJoacUOBX0=";
+        };
+      });
       # Development environments
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {

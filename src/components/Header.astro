@@ -3,83 +3,185 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://m.webtoo.ls/@astro" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-					></path></svg
-				>
-			</a>
-			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-					></path></svg
-				>
-			</a>
-			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
-		</div>
-	</nav>
-</header>
+<nav
+  id="navbar"
+  class="flex justify-between items-center p-4 overlay-accent relative bg-jp-waves"
+>
+  <div class="hori-selector"></div>
+  <a
+    href="/"
+    id="navBrand"
+    class="font-extrabold text-white p-2 bg-black/20 block"
+  >Koushinryou</a>
+  <div
+    id="currentPage"
+    class="text-2xl self-center text-white lg:hidden capitalize"
+  >home</div>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+  <label
+    for="menu-toggle"
+    class="lg:hidden px-3 py-2 flex items-center justify-center bg-accent-600 rounded-md"
+  >
+    <svg
+      id="hamburger-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="h-6 w-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4 6h16M4 12h16m-7 6h7"
+      ></path>
+    </svg>
+    <svg
+      id="close-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="h-6 w-6 hidden"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </label>
+  <div
+    id="nav-menu"
+    class="nav-menu hidden absolute lg:relative top-full right-0 w-full lg:w-auto bg-accent-900 lg:bg-transparent z-50 flex flex-col
+    items-end p-10 lg:p-0 [&>a]:min-w-32 [&>a]:rounded-l-full lg:[&>a]:rounded-t-none lg:[&>a]:rounded-b-full
+    [&>a]:capitalize [&>a]:bg-black/50 [&>a]:m-2 lg:[&>a]:m-0 lg:[&>a]:mx-2 [&>a]:bg-repeat"
+  >
+    <a href="/index.html" class="nav-link">
+      <span class="font-bold">Home</span>
+      <span>家</span>
+    </a>
+    <a href="/menu.html" class="nav-link">
+      <span class="font-bold">Menu</span>
+      <span>メニュー</span>
+    </a>
+    <a href="/waitlist.html" class="nav-link">
+      <span class="font-bold">Waitlist</span>
+      <span>キャン待ち</span>
+    </a>
+    <a href="/faq.html" class="nav-link">
+      <span class="font-bold">FAQ</span>
+      <span>訪う</span>
+    </a>
+    <a href="/blog.html" class="nav-link">
+      <span class="font-bold">Blog</span>
+      <span>ブログ</span>
+    </a>
+    <a href="/contact.html" class="nav-link">
+      <span class="font-bold">Reach Us</span>
+      <span>伸ばす</span>
+    </a>
+  </div>
+</nav>
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
+  .hori-selector {
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background-color: #111827;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+  }
+  .nav-link {
+    position: relative;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: #d1d5db;
+  }
+  .nav-link.active {
+    color: #fff;
+    background-color: #111827;
+    border-radius: 0.5rem;
+  }
+  @media (min-width: 1024px) {
+    #nav-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: auto;
+    }
+    .nav-link {
+      margin-right: 1rem;
+    }
+    #menu-toggle {
+      display: none;
+    }
+    #currentPage {
+      display: none;
+    }
+  }
+  .menu-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+  .menu-toggle:checked ~ label .hamburger-icon {
+    display: none;
+  }
+  .menu-toggle:checked ~ label .close-icon {
+    display: block;
+  }
 </style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".nav-link");
+  const horiSelector = document.querySelector(".hori-selector");
+  const currentPage = document.getElementById("currentPage");
+
+  const updateHoriSelector = (element) => {
+    if (window.innerWidth >= 1024 && element) {
+      const { offsetWidth, offsetLeft, offsetTop, offsetHeight } = element;
+      horiSelector.style.width = `\${offsetWidth}px`;
+      horiSelector.style.left = `\${offsetLeft}px`;
+      horiSelector.style.top = `\${offsetTop + offsetHeight}px`;
+    } else {
+      horiSelector.style.width = "0";
+    }
+  };
+
+  const handleResize = () => {
+    const activeLink = document.querySelector(".nav-link.active");
+    updateHoriSelector(activeLink);
+  };
+
+  const handleLinkClick = (link) => {
+    navLinks.forEach((node) => node.classList.remove("active"));
+    link.classList.add("active");
+    updateHoriSelector(link);
+  };
+
+  const setPageName = () => {
+    const path = window.location.pathname;
+    let currentPageName = path.substring(path.lastIndexOf("/") + 1).replace(".html", "").toLowerCase();
+    if (currentPageName === "index") {
+      currentPageName = "home";
+    }
+    currentPage.textContent = currentPageName || "home";
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => handleLinkClick(link));
+  });
+
+  window.addEventListener("resize", handleResize);
+  setPageName();
+  handleResize();
+});
+
+</script>
