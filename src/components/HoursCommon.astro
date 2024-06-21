@@ -21,7 +21,7 @@ let {
       <div class="grid h-3/4 grid-cols-2 gap-2 py-2">
         <div class="">
           <div
-            class="flex flex-row rounded-l bg-emerald-600 p-1 py-1 pl-6 text-base"
+            class="flex flex-row rounded-tl bg-emerald-600 p-1 py-1 pl-6 text-base"
           >
             <svg class="inline-block size-6 translate-y-1 pr-1">
               <use href="#icon-open"></use>
@@ -29,7 +29,7 @@ let {
             <span class="text-2xl">Open</span>
           </div>
           <div
-            class="prose mt-1 h-44 bg-background-700 p-1 pl-4 text-xl text-white *:block"
+            class="prose mt-1 h-44 rounded-bl bg-background-700 p-1 pl-4 text-xl text-white *:block"
           >
             <span>{daysOpen}</span>
             <span>{hoursOpen}</span>
@@ -37,7 +37,7 @@ let {
         </div>
         <div>
           <div
-            class="flex flex-row rounded-r bg-red-600 p-1 py-1 pl-6 text-base"
+            class="flex flex-row rounded-tr bg-red-600 p-1 py-1 pl-6 text-base"
           >
             <svg class="inline-block size-6 translate-y-1 pr-1">
               <use href="#icon-close"></use>
@@ -45,7 +45,7 @@ let {
             <span class="text-2xl">Closed</span>
           </div>
           <div
-            class="prose mt-1 h-44 bg-background-700 p-1 pl-4 text-xl text-white *:block"
+            class="prose mt-1 h-44 rounded-br bg-background-700 p-1 pl-4 text-xl text-white *:block"
           >
             <span> {daysClosed} </span>
             <span class="text-sm italic"
