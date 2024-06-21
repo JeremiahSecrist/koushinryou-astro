@@ -15,8 +15,8 @@ let {
       <iframe
         class="h-full w-full rounded-lg"
         id="ytplayer"
-        loading="lazy"
-        allowfullscreen=""
+        loading="eager"
+        allowfullscreen="no"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         title={videoTitle}
@@ -25,7 +25,7 @@ let {
       </iframe>
     </div>
     <div
-      class="relative flex h-96 flex-col rounded-lg bg-background-800 p-4 shadow-lg"
+      class="relative flex min-h-96 flex-col rounded-lg bg-background-800 p-4 shadow-lg"
     >
       <div class="relative flex w-full flex-grow overflow-auto">
         <div class="flex-grow">

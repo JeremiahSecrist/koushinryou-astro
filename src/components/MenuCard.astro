@@ -1,6 +1,8 @@
 ---
+import Image from "astro/components/Image.astro";
+
 const {
-  url = "images/gochuSaladBowl.png",
+  url = "/images/gochuSaladBowl.png",
   spiceLevel = 3,
   itemNameJp = "ペッパーサラダペッパーサラダ",
   itemNameEn = "Gochu Salad",
@@ -19,10 +21,13 @@ const {
   rel="stylesheet"
 />
 <div class="menuCard relative snap-start overflow-visible rounded-lg">
-  <img
+  <Image
     class="object-fit h-full w-full object-cover"
     src={url}
     alt={itemNameEn}
+    height="720"
+    width="1280"
+    loading="eager"
   />
   <div
     class="absolute right-0 top-0 z-10 flex h-full flex-col content-center bg-gradient-to-l from-black/80 from-50% text-white sm:text-xl"

@@ -1,6 +1,8 @@
 ---
-let {
-  addressUrl = "images/maps.png",
+import Image from "astro/components/Image.astro";
+
+const {
+  addressUrl = "/images/maps.png",
   daysClosed = "Saturday and Sunday",
   daysOpen = "Monday ~ Friday",
   hoursOpen = "10:30am-11pm",
@@ -62,9 +64,13 @@ let {
         Location
       </h1>
       <div class="relative overflow-hidden rounded">
-        <img
-          class="aspect-square h-56 w-full rounded object-cover [filter:grayscale(100%);] md:aspect-video"
+        <Image
+          alt="Google map of koushinryou"
           src={addressUrl}
+          class="aspect-square h-56 w-full rounded object-cover [filter:grayscale(100%);] md:aspect-video"
+          height="720"
+          width="1280"
+          loading="eager"
         />
         <div
           class="absolute inset-x-0 bottom-0 z-20 flex h-20 items-center rounded-t-xl bg-black/50 p-4 text-start text-xl capitalize leading-normal text-primary-400"
