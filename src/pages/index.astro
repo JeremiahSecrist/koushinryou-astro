@@ -5,6 +5,9 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import MenuCard from "../components/MenuCard.astro";
 import MenuCardDetailed from "../components/MenuCardDetailed.astro";
+import Sizzle from "../components/Sizzle.astro";
+import Specials from "../components/Specials.astro";
+import HoursCommon from "../components/HoursCommon.astro";
 ---
 
 <!doctype html>
@@ -15,8 +18,9 @@ import MenuCardDetailed from "../components/MenuCardDetailed.astro";
   <body>
     <Header />
     <main>
-      <MenuCardDetailed />
-      <MenuCard />
+      <Sizzle />
+      <Specials />
+      <HoursCommon />
     </main>
     <Footer />
   </body>

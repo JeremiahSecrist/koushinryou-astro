@@ -19,9 +19,39 @@ import { SITE_TITLE } from "../consts";
   >
     home
   </div>
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-  <label
-    for="menu-toggle"
+  <div
+    id="nav-menu"
+    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-2 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
+  >
+    <a href="/index.html" class="nav-link">
+      <span class="font-bold">Home</span>
+      <span>家</span>
+    </a>
+    <a href="/menu.html" class="nav-link">
+      <span class="font-bold">Menu</span>
+      <span>メニュー</span>
+    </a>
+    <a href="/waitlist.html" class="nav-link">
+      <span class="font-bold">Waitlist</span>
+      <span>キャン待ち</span>
+    </a>
+    <a href="/faq.html" class="nav-link">
+      <span class="font-bold">FAQ</span>
+      <span>訪う</span>
+    </a>
+    <a href="/blog.html" class="nav-link">
+      <span class="font-bold">Blog</span>
+      <span>ブログ</span>
+    </a>
+    <a href="/contact.html" class="nav-link">
+      <span class="font-bold">Reach Us</span>
+      <span>伸ばす</span>
+    </a>
+  </div>
+  <button
+    id="menu-toggle"
+    aria-expanded="false"
+    aria-controls="nav-menu"
     class="flex items-center justify-center rounded-md bg-accent-600 px-3 py-2 lg:hidden"
   >
     <svg
@@ -52,36 +82,7 @@ import { SITE_TITLE } from "../consts";
         stroke-linejoin="round"
         d="M6 18L18 6M6 6l12 12"></path>
     </svg>
-  </label>
-  <div
-    id="nav-menu"
-    class="nav-menu absolute right-0 top-full z-50 flex hidden w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-2 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
-  >
-    <a href="/index.html" class="nav-link">
-      <span class="font-bold">Home</span>
-      <span>家</span>
-    </a>
-    <a href="/menu.html" class="nav-link">
-      <span class="font-bold">Menu</span>
-      <span>メニュー</span>
-    </a>
-    <a href="/waitlist.html" class="nav-link">
-      <span class="font-bold">Waitlist</span>
-      <span>キャン待ち</span>
-    </a>
-    <a href="/faq.html" class="nav-link">
-      <span class="font-bold">FAQ</span>
-      <span>訪う</span>
-    </a>
-    <a href="/blog.html" class="nav-link">
-      <span class="font-bold">Blog</span>
-      <span>ブログ</span>
-    </a>
-    <a href="/contact.html" class="nav-link">
-      <span class="font-bold">Reach Us</span>
-      <span>伸ばす</span>
-    </a>
-  </div>
+  </button>
 </nav>
 <style>
   .hori-selector {
@@ -126,61 +127,76 @@ import { SITE_TITLE } from "../consts";
       display: none;
     }
   }
-  .menu-toggle:checked ~ .nav-menu {
-    display: flex;
-  }
-  .menu-toggle:checked ~ label .hamburger-icon {
-    display: none;
-  }
-  .menu-toggle:checked ~ label .close-icon {
-    display: block;
-  }
 </style>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
     const navLinks = document.querySelectorAll(".nav-link");
     const horiSelector = document.querySelector(".hori-selector");
     const currentPage = document.getElementById("currentPage");
-
+    const isMenuVisible = () => !navMenu.classList.contains("hidden");
+    const updateButtonIcons = () => {
+      hamburgerIcon.classList.toggle("hidden", isMenuVisible());
+      closeIcon.classList.toggle("hidden", !isMenuVisible());
+    };
+    const toggleMenu = () => {
+      const isOpen = navMenu.classList.toggle("hidden");
+      menuToggle.setAttribute("aria-expanded", !isOpen);
+      updateButtonIcons();
+    };
     const updateHoriSelector = (element) => {
       if (window.innerWidth >= 1024 && element) {
         const { offsetWidth, offsetLeft, offsetTop, offsetHeight } = element;
-        horiSelector.style.width = `\${offsetWidth}px`;
-        horiSelector.style.left = `\${offsetLeft}px`;
-        horiSelector.style.top = `\${offsetTop + offsetHeight}px`;
+        horiSelector.style.width = `${offsetWidth}px`;
+        horiSelector.style.left = `${offsetLeft}px`;
+        horiSelector.style.top = `${offsetTop + offsetHeight}px`;
       } else {
         horiSelector.style.width = "0";
       }
     };
-
     const handleResize = () => {
       const activeLink = document.querySelector(".nav-link.active");
       updateHoriSelector(activeLink);
+      const isDesktopView = window.innerWidth >= 1024;
+      navMenu.classList.toggle("hidden", !isDesktopView);
+      currentPage.classList.toggle("hidden", isDesktopView);
+      updateButtonIcons();
     };
-
     const handleLinkClick = (link) => {
       navLinks.forEach((node) => node.classList.remove("active"));
       link.classList.add("active");
       updateHoriSelector(link);
+      if (window.innerWidth < 1024) {
+        toggleMenu();
+      }
     };
-
     const setPageName = () => {
       const path = window.location.pathname;
+      console.log("Path:", path);
       let currentPageName = path
         .substring(path.lastIndexOf("/") + 1)
         .replace(".html", "")
         .toLowerCase();
+      console.log("Current Page Name:", currentPageName);
+      // Replace "index" with "home"
       if (currentPageName === "index") {
-        currentPageName = "home";
+        currentPageName = "HOME";
       }
+      console.log("Modified Page Name:", currentPageName);
       currentPage.textContent = currentPageName || "home";
     };
-
+    menuToggle.addEventListener("click", toggleMenu);
     navLinks.forEach((link) => {
       link.addEventListener("click", () => handleLinkClick(link));
     });
-
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", () => {
+      handleResize();
+      const activeLink = document.querySelector(".nav-link.active");
+      updateHoriSelector(activeLink);
+    });
     setPageName();
     handleResize();
   });
