@@ -1,69 +1,59 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
+let links = [
+  ["Home", "家"],
+  ["Menu", "メニュー"],
+  ["Waitlist", "キャン待ち"],
+  ["FAQ", "訪う"],
+  ["Blog", "ブログ"],
+  ["Reach Us", "伸ばす"],
+];
 ---
-
 <nav
   id="navbar"
   class="overlay-accent relative flex items-center justify-between bg-jp-waves p-2"
 >
-  <div class="hori-selector"></div>
   <a
     href="/"
     id="navBrand"
     class="rounded-r-full bg-black/50 p-2 font-extrabold text-primary-300"
   >
-    <span class="text-lg"> Koushinryou </span>
+    <span class="pr-4 text-lg"> Koushinryou </span>
     <span class="block text-sm text-accent-200">香辛料</span>
   </a>
-  <div
-    id="currentPage"
-    class="self-center text-2xl capitalize text-white lg:hidden"
-  >
+  <div id="currentPage" class="self-center text-2xl capitalize text-white lg:hidden">
     home
   </div>
   <div
     id="nav-menu"
-    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-1 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
+    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-1 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
   >
-    <a href="/index.html" class="nav-link">
-      <span class="font-bold text-primary-200">Home</span>
-      <span>家</span>
-    </a>
-    <a href="/menu.html" class="nav-link">
-      <span class="font-bold text-primary-200">Menu</span>
-      <span>メニュー</span>
-    </a>
-    <a href="/waitlist.html" class="nav-link">
-      <span class="font-bold text-primary-200">Waitlist</span>
-      <span>キャン待ち</span>
-    </a>
-    <a href="/faq.html" class="nav-link">
-      <span class="font-bold text-primary-200">FAQ</span>
-      <span>訪う</span>
-    </a>
-    <a href="/blog.html" class="nav-link">
-      <span class="font-bold text-primary-200">Blog</span>
-      <span>ブログ</span>
-    </a>
-    <a href="/contact.html" class="nav-link">
-      <span class="font-bold text-primary-200">Reach Us</span>
-      <span>伸ばす</span>
-    </a>
+    {links.map((item) => (
+      <a
+        href={`/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
+        class="nav-link group flex flex-col items-center p-3 text-gray-300"
+      >
+        <span class="font-bold text-primary-200 group-hover:underline">
+          {item[0]}
+        </span>
+        <span class="text-sm italic group-hover:underline">{item[1]}</span>
+      </a>
+    ))}
   </div>
   <button
     id="menu-toggle"
     aria-expanded="false"
     aria-controls="nav-menu"
-    class="flex items-center justify-center rounded-md bg-accent-600 px-3 py-2 lg:hidden"
+    class="flex items-center justify-center rounded-md bg-black/50 fill-white px-3 py-2 lg:hidden"
   >
     <svg
       id="hamburger-icon"
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
+      fill="black"
       viewBox="0 0 24 24"
       stroke-width="2"
-      stroke="currentColor"
+      stroke="white"
       class="h-6 w-6"
     >
       <path
@@ -74,10 +64,10 @@ import { SITE_TITLE } from "../consts";
     <svg
       id="close-icon"
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
+      fill="black"
       viewBox="0 0 24 24"
       stroke-width="2"
-      stroke="currentColor"
+      stroke="white"
       class="hidden h-6 w-6"
     >
       <path
@@ -88,40 +78,10 @@ import { SITE_TITLE } from "../consts";
   </button>
 </nav>
 <style>
-  .hori-selector {
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    background-color: #111827;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-  }
-  .nav-link {
-    position: relative;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    text-decoration: none;
-    color: #d1d5db;
-  }
-  .nav-link.active {
-    color: #fff;
-    background-color: #111827;
-    border-radius: 0.5rem;
-  }
   @media (min-width: 1024px) {
     #nav-menu {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      margin-left: auto;
-    }
-    .nav-link {
-      margin-right: 1rem;
     }
     #menu-toggle {
       display: none;
@@ -131,75 +91,38 @@ import { SITE_TITLE } from "../consts";
     }
   }
 </style>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const hamburgerIcon = document.getElementById("hamburger-icon");
     const closeIcon = document.getElementById("close-icon");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const horiSelector = document.querySelector(".hori-selector");
     const currentPage = document.getElementById("currentPage");
-    const isMenuVisible = () => !navMenu.classList.contains("hidden");
-    const updateButtonIcons = () => {
-      hamburgerIcon.classList.toggle("hidden", isMenuVisible());
-      closeIcon.classList.toggle("hidden", !isMenuVisible());
-    };
+
     const toggleMenu = () => {
-      const isOpen = navMenu.classList.toggle("hidden");
-      menuToggle.setAttribute("aria-expanded", !isOpen);
-      updateButtonIcons();
+      const isHidden = navMenu.classList.toggle("hidden");
+      menuToggle.setAttribute("aria-expanded", !isHidden);
+      hamburgerIcon.classList.toggle("hidden", !isHidden);
+      closeIcon.classList.toggle("hidden", isHidden);
     };
-    const updateHoriSelector = (element) => {
-      if (window.innerWidth >= 1024 && element) {
-        const { offsetWidth, offsetLeft, offsetTop, offsetHeight } = element;
-        horiSelector.style.width = `${offsetWidth}px`;
-        horiSelector.style.left = `${offsetLeft}px`;
-        horiSelector.style.top = `${offsetTop + offsetHeight}px`;
-      } else {
-        horiSelector.style.width = "0";
-      }
-    };
+
     const handleResize = () => {
-      const activeLink = document.querySelector(".nav-link.active");
-      updateHoriSelector(activeLink);
-      const isDesktopView = window.innerWidth >= 1024;
-      navMenu.classList.toggle("hidden", !isDesktopView);
-      currentPage.classList.toggle("hidden", isDesktopView);
-      updateButtonIcons();
+      const isDesktop = window.innerWidth >= 1024;
+      navMenu.classList.toggle("hidden", !isDesktop);
+      currentPage.classList.toggle("hidden", isDesktop);
+      hamburgerIcon.classList.toggle("hidden", isDesktop);
+      closeIcon.classList.toggle("hidden", true);
     };
-    const handleLinkClick = (link) => {
-      navLinks.forEach((node) => node.classList.remove("active"));
-      link.classList.add("active");
-      updateHoriSelector(link);
-      if (window.innerWidth < 1024) {
-        toggleMenu();
-      }
-    };
+
     const setPageName = () => {
       const path = window.location.pathname;
-      console.log("Path:", path);
-      let currentPageName = path
-        .substring(path.lastIndexOf("/") + 1)
-        .replace(".html", "")
-        .toLowerCase();
-      console.log("Current Page Name:", currentPageName);
-      // Replace "index" with "home"
-      if (currentPageName === "index") {
-        currentPageName = "HOME";
-      }
-      console.log("Modified Page Name:", currentPageName);
-      currentPage.textContent = currentPageName || "home";
+      let pageName = path.substring(path.lastIndexOf("/") + 1).toLowerCase() || "home";
+      currentPage.textContent = pageName === "index" ? "home" : pageName;
     };
+
     menuToggle.addEventListener("click", toggleMenu);
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => handleLinkClick(link));
-    });
-    window.addEventListener("resize", () => {
-      handleResize();
-      const activeLink = document.querySelector(".nav-link.active");
-      updateHoriSelector(activeLink);
-    });
+    window.addEventListener("resize", handleResize);
     setPageName();
     handleResize();
   });
