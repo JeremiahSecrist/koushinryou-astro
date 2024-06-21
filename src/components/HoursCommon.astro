@@ -18,10 +18,12 @@ let {
       >
         Hours
       </h1>
-      <div class="grid h-3/4 grid-cols-1 gap-2 py-2 sm:grid-cols-2">
+      <div class="grid h-3/4 grid-cols-2 gap-2 py-2">
         <div class="">
-          <div class="rounded-l bg-emerald-600 py-1 pl-6 text-base">
-            <svg class="inline-block size-6 -translate-y-1">
+          <div
+            class="flex flex-row rounded-l bg-emerald-600 p-1 py-1 pl-6 text-base"
+          >
+            <svg class="inline-block size-6 translate-y-1 pr-1">
               <use href="#icon-open"></use>
             </svg>
             <span class="text-2xl">Open</span>
@@ -34,8 +36,10 @@ let {
           </div>
         </div>
         <div>
-          <div class="rounded-r bg-red-600 p-1 py-1 pl-6 text-base">
-            <svg class="inline-block size-6 -translate-y-1 fill-white">
+          <div
+            class="flex flex-row rounded-r bg-red-600 p-1 py-1 pl-6 text-base"
+          >
+            <svg class="inline-block size-6 translate-y-1 pr-1">
               <use href="#icon-close"></use>
             </svg>
             <span class="text-2xl">Closed</span>
