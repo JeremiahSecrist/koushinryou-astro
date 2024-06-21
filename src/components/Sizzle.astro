@@ -1,3 +1,10 @@
+---
+let {
+  videoUrl = "https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=https%3A%2F%2Fkoushinryou.secrist.xyz&widgetid=1",
+  videoTitle = "YouTube Developers Live: Embedded Web Player Customization",
+} = Astro.props;
+---
+
 <div class="mx-auto max-w-screen-2xl bg-background-900 px-4 py-10 md:px-8">
   <div class="mx-4 grid gap-2 sm:grid-cols-1 md:grid-cols-2">
     <div
@@ -11,31 +18,19 @@
         allowfullscreen=""
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
-        title="YouTube Developers Live: Embedded Web Player Customization"
+        title={videoTitle}
         width="100%"
         height="100%"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=https%3A%2F%2Fkoushinryou.secrist.xyz&widgetid=1"
-      ></iframe>
+        src={videoUrl}
+      >
+      </iframe>
     </div>
     <div
       class="relative flex h-96 flex-col rounded-lg bg-background-700 p-4 shadow-lg"
     >
       <div class="relative flex w-full flex-grow">
         <div class="flex-grow">
-          <h2 class="mb-2 text-lg font-semibold text-white">Our Passion</h2>
-          <p class="mb-4 text-sm text-white">
-            Discover the untold stories behind our passion for quality and
-            innovation. Dive into the journey of craftsmanship, where every
-            detail is meticulously crafted to bring joy and inspiration to your
-            life.
-          </p>
-          <h2 class="mb-2 text-lg font-semibold text-white">Our Mission</h2>
-          <p class="mb-4 text-sm text-white">
-            Join us in exploring the intersection of tradition and modernity,
-            where ancient techniques meet cutting-edge technology. Together,
-            let's embark on a voyage of creativity and imagination, shaping the
-            future one innovation at a time.
-          </p>
+          <slot />
         </div>
       </div>
       <div class="relative flex w-full flex-row">
@@ -55,19 +50,3 @@
     </div>
   </div>
 </div>
-<script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  // Replace the 'ytplayer' element with an <iframe> and YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player("ytplayer", {
-      height: "100%",
-      width: "100%",
-      videoId: "M7lc1UVf-VE",
-    });
-  }
-</script>

@@ -5,14 +5,17 @@ import { SITE_TITLE } from "../consts";
 
 <nav
   id="navbar"
-  class="overlay-accent relative flex items-center justify-between bg-jp-waves p-4"
+  class="overlay-accent relative flex items-center justify-between bg-jp-waves p-2"
 >
   <div class="hori-selector"></div>
   <a
     href="/"
     id="navBrand"
-    class="block bg-black/20 p-2 font-extrabold text-white">Koushinryou</a
+    class="rounded-r-full bg-black/50 p-2 font-extrabold text-primary-300"
   >
+    <span class="text-lg"> Koushinryou </span>
+    <span class="block text-sm text-accent-200">香辛料</span>
+  </a>
   <div
     id="currentPage"
     class="self-center text-2xl capitalize text-white lg:hidden"
@@ -21,30 +24,30 @@ import { SITE_TITLE } from "../consts";
   </div>
   <div
     id="nav-menu"
-    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-2 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
+    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-10 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-1 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
   >
     <a href="/index.html" class="nav-link">
-      <span class="font-bold">Home</span>
+      <span class="font-bold text-primary-200">Home</span>
       <span>家</span>
     </a>
     <a href="/menu.html" class="nav-link">
-      <span class="font-bold">Menu</span>
+      <span class="font-bold text-primary-200">Menu</span>
       <span>メニュー</span>
     </a>
     <a href="/waitlist.html" class="nav-link">
-      <span class="font-bold">Waitlist</span>
+      <span class="font-bold text-primary-200">Waitlist</span>
       <span>キャン待ち</span>
     </a>
     <a href="/faq.html" class="nav-link">
-      <span class="font-bold">FAQ</span>
+      <span class="font-bold text-primary-200">FAQ</span>
       <span>訪う</span>
     </a>
     <a href="/blog.html" class="nav-link">
-      <span class="font-bold">Blog</span>
+      <span class="font-bold text-primary-200">Blog</span>
       <span>ブログ</span>
     </a>
     <a href="/contact.html" class="nav-link">
-      <span class="font-bold">Reach Us</span>
+      <span class="font-bold text-primary-200">Reach Us</span>
       <span>伸ばす</span>
     </a>
   </div>
