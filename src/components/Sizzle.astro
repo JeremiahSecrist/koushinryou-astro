@@ -9,11 +9,11 @@ let {
 <div class="mx-auto max-w-screen-2xl bg-background-900 px-4 py-10 md:px-8">
   <div class="mx-4 grid gap-2 sm:grid-cols-1 md:grid-cols-2">
     <div
-      class="relative box-border flex h-96 items-end rounded-lg bg-background-800 shadow-lg overflow-hidden"
+      class="relative box-border flex h-96 items-end overflow-hidden rounded-lg bg-background-800 shadow-lg"
       id="ytplayer"
     >
       <iframe
-        class="absolute top-0 left-0 w-full h-full rounded-lg"
+        class="h-full w-full rounded-lg"
         id="ytplayer"
         loading="lazy"
         allowfullscreen=""
@@ -25,18 +25,24 @@ let {
       </iframe>
     </div>
     <div
-      class="relative flex h-96 flex-col rounded-lg bg-background-700 p-4 shadow-lg"
+      class="relative flex h-96 flex-col rounded-lg bg-background-800 p-4 shadow-lg"
     >
       <div class="relative flex w-full flex-grow overflow-auto">
         <div class="flex-grow">
           <slot />
         </div>
       </div>
-      <div class="relative flex w-full flex-row gap-2 mt-4">
-        <Button href="menu" class="bg-primary-500 hover:bg-primary-600">
+      <div class="relative mt-4 flex w-full flex-row gap-2">
+        <Button
+          href="menu"
+          class="bg-primary-500 hover:bg-primary-600 active:bg-primary-700"
+        >
           Menu
         </Button>
-        <Button href="faq" class="bg-accent-500 hover:bg-accent-600">
+        <Button
+          href="faq"
+          class="bg-accent-500 hover:bg-accent-600 active:bg-accent-700"
+        >
           FAQ
         </Button>
       </div>
