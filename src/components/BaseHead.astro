@@ -1,6 +1,8 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import { ViewTransitions } from "astro:transitions";
+
 import "../styles/global.css";
 
 interface Props {
@@ -35,7 +37,15 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   type="font/woff"
   crossorigin
 />
-
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin="crossorigin"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+JP:wght@200..900&display=swap"
+  rel="stylesheet"
+/>
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
@@ -57,3 +67,5 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<ViewTransitions />
