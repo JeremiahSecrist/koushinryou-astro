@@ -10,6 +10,7 @@ let links = [
   ["Reach Us", "伸ばす"],
 ];
 ---
+
 <nav
   id="navbar"
   class="overlay-accent relative flex items-center justify-between bg-jp-waves p-2"
@@ -22,24 +23,29 @@ let links = [
     <span class="pr-4 text-lg"> Koushinryou </span>
     <span class="block text-sm text-accent-200">香辛料</span>
   </a>
-  <div id="currentPage" class="self-center text-2xl capitalize text-white lg:hidden">
+  <div
+    id="currentPage"
+    class="self-center text-2xl capitalize text-white lg:hidden"
+  >
     home
   </div>
   <div
     id="nav-menu"
-    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 lg:relative lg:w-auto lg:bg-transparent lg:p-0 [&>a]:m-1 [&>a]:min-w-32 [&>a]:rounded-l-full [&>a]:bg-black/50 [&>a]:bg-repeat [&>a]:capitalize lg:[&>a]:m-0 lg:[&>a]:mx-2 lg:[&>a]:rounded-b-full lg:[&>a]:rounded-t-none"
+    class="absolute right-0 top-full z-50 flex w-full flex-col items-stretch items-end bg-accent-900 lg:relative lg:w-auto lg:bg-transparent lg:p-0 p-2"
   >
-    {links.map((item) => (
-      <a
-        href={`/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
-        class="nav-link group flex flex-col items-center p-3 text-gray-300"
-      >
-        <span class="font-bold text-primary-200 group-hover:underline">
-          {item[0]}
-        </span>
-        <span class="text-sm italic group-hover:underline">{item[1]}</span>
-      </a>
-    ))}
+    {
+      links.map((item) => (
+        <a
+          href={`/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
+          class="nav-link group m-1 items-center bg-black/40 bg-repeat p-3 capitalize text-gray-300 lg:mx-1 lg:rounded lg:first:rounded-l-full"
+        >
+          <span class="font-bold text-primary-200 group-hover:underline">
+            {item[0]}
+          </span>
+          <span class="text-sm italic group-hover:underline">{item[1]}</span>
+        </a>
+      ))
+    }
   </div>
   <button
     id="menu-toggle"
@@ -117,7 +123,8 @@ let links = [
 
     const setPageName = () => {
       const path = window.location.pathname;
-      let pageName = path.substring(path.lastIndexOf("/") + 1).toLowerCase() || "home";
+      let pageName =
+        path.substring(path.lastIndexOf("/") + 1).toLowerCase() || "home";
       currentPage.textContent = pageName === "index" ? "home" : pageName;
     };
 

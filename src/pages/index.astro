@@ -3,20 +3,18 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import MenuCard from "../components/MenuCard.astro";
-import MenuCardDetailed from "../components/MenuCardDetailed.astro";
 import Sizzle from "../components/Sizzle.astro";
 import Specials from "../components/Specials.astro";
 import HoursCommon from "../components/HoursCommon.astro";
 import Newletter from "../components/Newletter.astro";
----
+--- 
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="bg-background-900">
     <Header />
     <main>
       <Sizzle>

@@ -1,0 +1,56 @@
+---
+// Import required modules and types
+import BlogPost from "../../layouts/BlogPost.astro";
+import { wpquery } from "../../data/wordpress";
+
+export async function getStaticPaths() {
+  const data = await wpquery({
+    query: `
+      query LoadAllPosts {
+      posts {
+        nodes {
+          featuredImage {
+            node {
+              altText
+              mediaItemUrl
+              srcSet
+              sizes
+            }
+          }
+          date
+          slug
+          title
+          content(format: RENDERED)
+          author {
+            node {
+              name
+            }
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+    `,
+  });
+
+  return data.posts.nodes.map((post: any) => {
+    return {
+      params: { slug: post.slug }, 
+      props: { post }, 
+    };
+  });
+}
+const tags = [
+  ""
+]
+// Get the props from Astro
+const { post } = Astro.props;
+---
+
+<BlogPost title={post.title} tags={post.tags}>
+  <Fragment set:html={post.content} />
+</BlogPost>
