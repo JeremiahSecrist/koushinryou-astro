@@ -4,14 +4,14 @@ import Image from "astro/components/Image.astro";
 const {
   url = "/images/gochuSaladBowl.png",
   spiceLevel = 3,
-  itemNameJp = "ペッパーサラダペッパーサラダ",
+  itemNameJp = "ペッパーサラダペッパーサラダペッパーサラダ",
   itemNameEn = "Gochu Salad",
   itemPrice = "$6.99",
   itemLikes = 2,
 } = Astro.props;
 ---
 
-<div class="menuCard relative snap-start overflow-visible rounded-lg">
+<div class="menuCard relative snap-start rounded-md">
   <Image
     class="object-fit h-full w-full object-cover"
     src={url}
@@ -28,7 +28,7 @@ const {
     >
     </div>
     <!-- Japanese Text with Manual Line Break -->
-    <p class="upright jp m-2 max-h-48 max-w-36 text-gray-300 sm:text-xl">
+    <p class="upright jp max-w-18 py-8 text-xl text-gray-300">
       {itemNameJp}
     </p>
   </div>

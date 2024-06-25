@@ -1,0 +1,240 @@
+---
+import Default from "../layouts/Default.astro";
+import Chart from "../components/chart/index.astro";
+import MenuCard from "../components/MenuCard.astro";
+import MenuCardDetailed from "../components/MenuCardDetailed.astro";
+---
+
+<Default>
+  <div class="mx-auto py-4">
+    <div class="grid grid-cols-1 md:grid-cols-4">
+      <div class="bg-background-300 md:col-span-3">
+        <div class="tabs w-full">
+          <!-- Mobile dropdown button -->
+          <button
+            class="block w-full bg-background-800 py-4 text-center text-white md:hidden"
+            id="mobileMenuButton"
+          >
+            Menu
+          </button>
+          <ul
+            class="hidden flex-wrap border-b border-gray-400 bg-background-800 text-center text-sm font-medium text-white md:flex"
+          >
+            <li class="mr-2">
+              <button
+                class="active inline-block rounded-t-lg bg-background-700 p-4 hover:bg-background-600"
+                aria-current="page"
+                data-tab="Appetizers">Appetizer</button
+              >
+            </li>
+            <li class="mr-2">
+              <button
+                class="inline-block rounded-t-lg p-4 hover:bg-background-600"
+                data-tab="Entres">Entres</button
+              >
+            </li>
+            <li class="mr-2">
+              <button
+                class="inline-block rounded-t-lg p-4 hover:bg-background-600"
+                data-tab="WeeklySpecials">Weekly Specials</button
+              >
+            </li>
+            <li class="mr-2">
+              <button
+                class="inline-block rounded-t-lg p-4 hover:bg-background-600"
+                data-tab="Sides">Sides</button
+              >
+            </li>
+            <li class="mr-2">
+              <button
+                class="inline-block rounded-t-lg p-4 hover:bg-background-600"
+                data-tab="Drinks">Drinks</button
+              >
+            </li>
+            <li class="mr-2">
+              <button
+                class="inline-block rounded-t-lg p-4 hover:bg-background-600"
+                data-tab="Desserts">Desserts</button
+              >
+            </li>
+          </ul>
+          <!-- Mobile dropdown menu -->
+          <div id="mobile-menu" class="hidden bg-background-800 md:hidden">
+            <ul class="text-white">
+              <li>
+                <button
+                  class="block border-b border-background-600 p-4"
+                  data-tab="Appetizers">Appetizer</button
+                >
+              </li>
+              <li>
+                <button
+                  class="block border-b border-background-600 p-4"
+                  data-tab="Entres">Entres</button
+                >
+              </li>
+              <li>
+                <button
+                  class="block border-b border-background-600 p-4"
+                  data-tab="WeeklySpecials">Weekly Specials</button
+                >
+              </li>
+              <li>
+                <button
+                  class="block border-b border-background-600 p-4"
+                  data-tab="Sides">Sides</button
+                >
+              </li>
+              <li>
+                <button
+                  class="block border-b border-background-600 p-4"
+                  data-tab="Drinks">Drinks</button
+                >
+              </li>
+              <li>
+                <button class="block p-4" data-tab="Desserts">Desserts</button>
+              </li>
+              <li>
+                <button class="block p-4" data-tab="Cart">Cart</button>
+              </li>
+            </ul>
+          </div>
+          <div
+            id="Appetizers"
+            class="tab-content current-tab m-2 max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+            </div>
+          </div>
+          <div
+            id="Entres"
+            class="tab-content m-2 hidden max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+              <MenuCard />
+            </div>
+          </div>
+          <div
+            id="WeeklySpecials"
+            class="tab-content m-2 hidden max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+            </div>
+          </div>
+          <div
+            id="Sides"
+            class="tab-content m-2 hidden max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+            </div>
+          </div>
+          <div
+            id="Drinks"
+            class="tab-content m-2 hidden max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+            </div>
+          </div>
+          <div
+            id="Desserts"
+            class="tab-content m-2 hidden max-h-screen overflow-auto"
+          >
+            <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+              <MenuCard />
+            </div>
+          </div>
+          <!-- <div id="Cart" class="tab-content m-2 max-h-screen overflow-auto">
+            <Chart />
+          </div> -->
+        </div>
+      </div>
+      <div
+        class="mt-4 hidden bg-background-700 md:col-span-1 md:col-start-4 md:mt-0 md:block"
+      >
+        <Chart />
+      </div>
+      <div
+        id="modalContainer"
+        class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-50"
+        style="display:none;"
+      >
+        <MenuCardDetailed />
+      </div>
+    </div>
+    <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.querySelectorAll(".tabs button");
+        tablinks.forEach((link) => {
+          link.classList.remove("bg-background-700");
+        });
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("bg-background-700");
+        // Close mobile menu after selecting an option
+        var mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.add("hidden");
+      }
+      function toggleMobileMenu() {
+        var mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+      }
+      window.addEventListener("DOMContentLoaded", function () {
+        // Get menu cards
+        const menuCards = document.getElementsByClassName("menuCard");
+        // Get modal container
+        const modalContainer = document.getElementById("modalContainer");
+        // Add click event listeners to menu cards
+        for (var i = 0; i < menuCards.length; i++) {
+          menuCards[i].addEventListener("click", () => {
+            // Display modal
+            modalContainer.style.display = "block";
+            // Lock scrolling
+            document.body.classList.add("overflow-hidden");
+          });
+        }
+        // Close modal event listener
+        const closeModalButton = document.getElementById("closeModalButton");
+        if (closeModalButton) {
+          closeModalButton.addEventListener("click", () => {
+            // Hide modal
+            modalContainer.style.display = "none";
+            // Unlock scrolling
+            document.body.classList.remove("overflow-hidden");
+          });
+        }
+      });
+
+      document
+        .getElementById("mobileMenuButton")
+        .addEventListener("click", toggleMobileMenu);
+      document.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          openTab(event, button.getAttribute("data-tab"));
+        });
+      });
+    </script>
+  </div>
+</Default>

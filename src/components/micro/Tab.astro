@@ -1,0 +1,28 @@
+---
+const { index, label, class: className } = Astro.props;
+---
+
+<div
+  class="float-left text-white [&_label]:first:rounded-tl-md [&_label]:last:rounded-tr-md"
+>
+  <input
+    type="radio"
+    id={`tab${index}`}
+    name="tab-group"
+    checked={index == "0"}
+    class="peer hidden"
+  />
+  <label
+    for={`tab${index}`}
+    class="cursor-pointer border border-primary-300 bg-background-600 p-2 peer-checked:border-b-white peer-checked:bg-background-400"
+  >
+    {label}
+  </label>
+  <div
+    class="absolute bottom-0 left-0 right-0 top-14 hidden border border-primary-300 bg-background-600 p-5 peer-checked:block"
+  >
+    <div class={className}>
+      <slot />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+---
+import ChartItem from "./ChartItem.astro";
+---
+
+<div class="flex-0 flex flex-row items-center justify-between py-2">
+  <h1 class="ml-2 text-2xl font-bold text-white">Order Pending</h1>
+  <!-- TODO: make a modal popup to confirm here or to go -->
+  <button
+    class="mr-2 rounded-lg bg-primary-600 p-2 font-semibold text-white hover:bg-primary-800"
+    onclick="my_modal_1.showModal()"
+  >
+    Checkout
+  </button>
+</div>
+<div class="px-2 py-2">
+  <div class="grid grid-rows-2">
+    <div
+      class="grid grid-cols-6 overflow-hidden rounded-t-md font-bold *:row-span-3 *:bg-background-500 *:pt-4 *:text-center *:text-white"
+    >
+      <div class="col-span-3">Taxes</div>
+      <div class="col-span-3">Total</div>
+    </div>
+    <div
+      class="grid grid-cols-6 *:col-span-3 *:bg-background-100 *:text-center *:shadow"
+    >
+      <div class="">$13.98</div>
+      <div class="">$14.95</div>
+    </div>
+  </div>
+</div>
+<div class="mx-2 mt-4 flex flex-col">
+  <div
+    class="grid grid-cols-8 overflow-hidden rounded-t-md bg-background-500 *:pt-4 *:text-center *:font-bold *:text-white"
+  >
+    <div class="col-span-3">Name</div>
+    <div class="col-span-2">Price</div>
+    <div class="col-span-1">&#35;</div>
+    <div class="col-span-2">Totals</div>
+  </div>
+  {Array.from({ length: 10 }, (_, i) => <ChartItem />)}
+</div>

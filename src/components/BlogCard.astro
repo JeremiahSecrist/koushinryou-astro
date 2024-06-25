@@ -1,0 +1,66 @@
+---
+const {
+  title = "Doing a lot with very little",
+  imageUrl = "https://imgix.cosmicjs.com/76185310-2eb4-11ed-9dcf-4f97d8f41281-simple-photo.jpg?w=1200&auto=format,compression",
+  exerpt = `In Japanese cuisine, there's a profound elegance in simplicity, where
+        every dish embodies the art of doing a lot with very little. Join us in
+        exploring the world where limitations inspire innovation and where the
+        essence of Japanese cooking lies in the mastery of simplicity.`,
+  tags = ["Culture", "Japan", "Cooking"],
+  readTime = "1m",
+  href = "/blog/gochu-salad",
+} = Astro.props;
+---
+
+<li
+  class="rounded-md bg-gray-700 shadow-md transition hover:shadow-xl [&_a]:first-of-type:flex-col [&_img]:first-of-type:h-96 [&_img]:first-of-type:rounded-b-none [&_img]:first-of-type:rounded-t-md"
+>
+  <a href={href} class="flex">
+    <div class="">
+      <img
+        src={imageUrl}
+        alt="Featured Blog Post"
+        class="h-full w-full rounded-l-md object-cover object-center"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="m-2 flex h-full flex-col gap-y-2 pl-2 text-white">
+      <h2
+        class="pr-4 pt-2 text-2xl font-extrabold capitalize italic text-primary-500"
+      >
+        {title}
+      </h2>
+      <div class="flex flex-row gap-x-2 pl-2">
+        <span class="[*]:align-bottom">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="inline-block h-5 w-5"
+          >
+            <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+            <path
+              fill-rule="evenodd"
+              d="M1.38 8.28a.87.87 0 0 1 0-.566 7.003 7.003 0 0 1 13.238.006.87.87 0 0 1 0 .566A7.003 7.003 0 0 1 1.379 8.28ZM11 8a3 3
+                0 1 1-6 0 3 3 0 0 1 6 0Z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="font-bold italic">{readTime}</span>
+        </span>
+        <ul class="flex flex-wrap gap-1">
+          {
+            tags.map((tag) => (
+              <li class="w-20 whitespace-nowrap rounded-md bg-accent-600 px-2 text-center text-sm font-bold text-white shadow transition hover:text-accent-100 hover:underline">
+                {tag}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <p class="p-4">
+        {exerpt}
+      </p>
+    </div>
+  </a>
+</li>

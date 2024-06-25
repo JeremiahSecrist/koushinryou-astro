@@ -1,7 +1,7 @@
 .overlay-accent {
   border-image: linear-gradient(
-      oklab(34.97% -0.037 -0.07 / 0.9),
-      oklab(15.91% -0.018 -0.02 / 0.9)
+      oklab(34.97% -0.037 -0.07 / 0.95),
+      oklab(15.91% -0.018 -0.02 / 0.98)
     )
     fill 1;
 }

@@ -1,0 +1,85 @@
+<div class="bg-gray-900 py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <!-- text - start -->
+    <div class="mb-10 md:mb-16">
+      <h2
+        class="mb-4 text-center text-2xl font-bold text-gray-100 md:mb-6 lg:text-3xl"
+      >
+        Join our team.
+      </h2>
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">
+        Upload your resume, we will get back to you as soon as possible.
+      </p>
+    </div>
+    <!-- text - end -->
+    <!-- form - start -->
+    <form class="mx-auto grid max-w-screen-md gap-4">
+      <div>
+        <label
+          for="name"
+          class="mb-2 inline-block text-sm text-gray-100 sm:text-base"
+          >Full name*</label
+        >
+        <input
+          name="name"
+          class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+        />
+      </div>
+      <div>
+        <label
+          for="phone"
+          class="mb-2 inline-block text-sm text-gray-100 sm:text-base"
+        >
+          Phone number
+        </label>
+        <input
+          name="phone"
+          class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+        />
+      </div>
+      <div>
+        <label
+          for="email"
+          class="mb-2 inline-block text-sm text-gray-100 sm:text-base"
+          >Email*</label
+        >
+        <input
+          name="email"
+          class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+        />
+      </div>
+      <div>
+        <label
+          for="message"
+          class="mb-2 inline-block text-sm text-gray-100 sm:text-base"
+          >Message*
+        </label>
+        <textarea
+          name="message"
+          class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+          style="resize: none; overflow:auto;"></textarea>
+      </div>
+      <div>
+        <label
+          for="file-upload"
+          class="mb-2 inline-block text-sm text-gray-100 sm:text-base"
+          >Attach a file(pdf, doc, docx):
+        </label>
+        <input
+          type="file"
+          name="file-upload"
+          class="w-full transition duration-100 file:rounded file:border file:border-gray-800 file:bg-gray-700 file:px-3 file:py-2 file:text-sm file:text-gray-100 file:outline-none focus:file:ring-indigo-300"
+        />
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"
+        >
+          Send
+        </button>
+        <span class="text-sm text-gray-500">*Required</span>
+      </div>
+    </form>
+    <!-- form - end -->
+  </div>
+</div>

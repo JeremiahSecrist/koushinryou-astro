@@ -8,6 +8,8 @@ import HoursCommon from "../../components/HoursCommon.astro";
 import Newletter from "../../components/Newletter.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { wpquery } from "../../data/wordpress";
+import BlogCard from "../../components/BlogCard.astro";
+import Default from "../../layouts/Default.astro";
 const data = await wpquery({
   query: `
     query LoadAllPosts {
@@ -37,29 +39,9 @@ const data = await wpquery({
 });
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <!-- <section class="w-full bg-slate-400"> -->
-      <!-- {
-          data.posts.nodes.map((post: any) => (
-            <>
-              <div class="flex flex-col">
-                <h1>{post.slug}</h1>
-                <div class="bg-blue-200">
-                  <Fragment set:html={post.content} />
-                </div>
-              </div>
-            </>
-          ))
-        } -->
-      <!-- </section> -->
-    </main>
-    <Footer />
-  </body>
-</html>
+<Default>
+  <ol class="pl-auto mx-auto my-4 max-w-prose items-center space-y-2">
+    <BlogCard />
+    <BlogCard />
+  </ol>
+</Default>

@@ -12,7 +12,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   </head>
   <body class="bg-background-900">
     <Header />
-    <slot />
+    <div class="min-h-svh">
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>

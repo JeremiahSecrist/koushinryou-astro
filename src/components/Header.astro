@@ -7,7 +7,7 @@ let links = [
   ["Waitlist", "キャン待ち"],
   ["FAQ", "訪う"],
   ["Blog", "ブログ"],
-  ["Reach Us", "伸ばす"],
+  ["Reach-Us", "伸ばす"],
 ];
 ---
 
@@ -31,13 +31,13 @@ let links = [
   </div>
   <div
     id="nav-menu"
-    class="absolute right-0 top-full z-50 flex w-full flex-col items-stretch items-end bg-accent-900 lg:relative lg:w-auto lg:bg-transparent lg:p-0 p-2"
+    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-2 lg:relative lg:w-auto lg:bg-transparent lg:p-0"
   >
     {
       links.map((item) => (
         <a
           href={`/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
-          class="nav-link group m-1 items-center bg-black/40 bg-repeat p-3 capitalize text-gray-300 lg:mx-1 lg:rounded lg:first:rounded-l-full"
+          class="nav-link lg:min group m-1 flex w-48 flex-row place-content-end bg-black/40 bg-repeat p-3 capitalize text-gray-300 *:mx-1 md:w-fit lg:mx-1 lg:items-center lg:rounded-md lg:first:rounded-l-full"
         >
           <span class="font-bold text-primary-200 group-hover:underline">
             {item[0]}

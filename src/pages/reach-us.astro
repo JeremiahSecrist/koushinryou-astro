@@ -1,0 +1,61 @@
+---
+import Default from "../layouts/Default.astro";
+import Contact from "../components/forms/Contact.astro";
+import Hiring from "../components/forms/Hiring.astro";
+---
+
+<Default>
+  <div class="tabs mx-auto w-full justify-center pt-4 lg:w-2/3">
+    <ul
+      class="flex flex-wrap border-b border-gray-400 text-center text-sm font-medium text-white"
+    >
+      <li class="mr-2">
+        <a
+          href="#"
+          class="active inline-block rounded-t-lg bg-background-800 p-4 text-white hover:bg-background-600 hover:text-white"
+          aria-current="page"
+          data-tab="ContactForm">Contact Form</a
+        >
+      </li>
+      <li class="mr-2">
+        <a
+          href="#"
+          class="inline-block rounded-t-lg p-4 hover:bg-background-600 hover:text-white"
+          data-tab="HiringForm">Hiring Form</a
+        >
+      </li>
+    </ul>
+    <div id="ContactForm" class="tab-content">
+      <Contact />
+    </div>
+    <div id="HiringForm" class="tab-content hidden">
+      <Hiring />
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.querySelectorAll(".tabs a");
+        tablinks.forEach((link) => {
+          link.className = link.className.replace(" bg-background-800", "");
+        });
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " bg-background-800";
+      }
+
+      const tabLinks = document.querySelectorAll(".tabs a");
+      tabLinks.forEach((link) => {
+        link.addEventListener("click", function(evt) {
+          evt.preventDefault(); // Prevent default anchor behavior
+          const tabName = this.getAttribute("data-tab");
+          openTab(evt, tabName);
+        });
+      });
+    });
+  </script>
+</Default>
