@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jeremiahsecrist.github.io/koushinryou-astro",
+  site: "https://jeremiahsecrist.github.io",
+  path: "koushinryou-astro",
   integrations: [mdx(), sitemap(), tailwind()],
 });
