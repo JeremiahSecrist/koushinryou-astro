@@ -26,8 +26,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: result
-          
+          path: dist
+
   publish:
     name: Publish to Cloudflare Pages
     runs-on: ubuntu-latest
