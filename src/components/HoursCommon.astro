@@ -1,6 +1,6 @@
 ---
 import Image from "astro/components/Image.astro";
-
+const BASE_URL = import.meta.env.BASE_URL;
 const {
   addressUrl = "/images/maps.png",
   daysClosed = "Saturday and Sunday",
@@ -66,7 +66,7 @@ const {
       <div class="relative overflow-hidden rounded">
         <Image
           alt="Google map of koushinryou"
-          src={addressUrl}
+          src=`${BASE_URL}/${addressUrl}`
           class="aspect-square h-56 w-full rounded object-cover [filter:grayscale(100%);] md:aspect-video"
           height="720"
           width="1280"
