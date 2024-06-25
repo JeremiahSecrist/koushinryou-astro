@@ -41,6 +41,7 @@ jobs:
       contents: read
       deployments: write
       id-token: write
+      pages: write
     steps:
       - uses: actions/download-artifact@v4
         with:
