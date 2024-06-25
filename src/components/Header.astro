@@ -1,6 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
+const BASE_URL = import.meta.env.BASE_URL;
 let links = [
   ["Home", "家"],
   ["Menu", "メニュー"],
@@ -36,7 +37,7 @@ let links = [
     {
       links.map((item) => (
         <a
-          href={`/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
+          href={`${BASE_URL}/${item[0].toLowerCase() === "home" ? "" : item[0].toLowerCase()}`}
           class="nav-link lg:min group m-1 flex w-48 flex-row place-content-end bg-black/40 bg-repeat p-3 capitalize text-gray-300 *:mx-1 md:w-fit lg:mx-1 lg:items-center lg:rounded-md lg:first:rounded-l-full"
         >
           <span class="font-bold text-primary-200 group-hover:underline">
