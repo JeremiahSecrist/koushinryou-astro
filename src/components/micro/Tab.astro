@@ -14,12 +14,12 @@ const { index, label, class: className } = Astro.props;
   />
   <label
     for={`tab${index}`}
-    class="cursor-pointer border border-primary-300 bg-background-600 p-2 peer-checked:border-b-white peer-checked:bg-background-400"
+    class="inline-block cursor-pointer bg-background-800 p-4 pb-10 text-white hover:bg-background-400 hover:text-white peer-checked:border-b-white peer-checked:bg-background-600"
   >
     {label}
   </label>
   <div
-    class="absolute bottom-0 left-0 right-0 top-14 hidden border border-primary-300 bg-background-600 p-5 peer-checked:block"
+    class="absolute bottom-0 left-0 top-16 hidden bg-background-600 p-5 peer-checked:block"
   >
     <div class={className}>
       <slot />
