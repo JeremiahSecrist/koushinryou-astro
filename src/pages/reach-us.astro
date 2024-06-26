@@ -43,7 +43,7 @@ import Hiring from "../components/forms/Hiring.astro";
           link.classList.remove("bg-background-800");
         });
 
-        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).style.display = "block"; 
         evt.currentTarget.classList.add("bg-background-800");
       }
 
@@ -57,6 +57,6 @@ import Hiring from "../components/forms/Hiring.astro";
       });
     }
     document.addEventListener("DOMContentLoaded", initializeTabs);
-    // document.addEventListener("astro:page-load", initializeTabs);
+    document.addEventListener("astro:page-load", initializeTabs);
   </script>
 </Default>
