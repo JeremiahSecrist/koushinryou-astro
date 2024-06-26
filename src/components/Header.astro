@@ -17,7 +17,7 @@ let links = [
   class="overlay-accent relative flex items-center justify-between bg-jp-waves p-2"
 >
   <a
-    href=`${BASE_URL}`
+    href={BASE_URL}
     id="navBrand"
     class="rounded-r-full bg-black/50 p-2 font-extrabold text-primary-300"
   >
@@ -32,7 +32,7 @@ let links = [
   </div>
   <div
     id="nav-menu"
-    class="absolute right-0 top-full z-50 flex w-full flex-col items-end bg-accent-900 p-2 lg:relative lg:w-auto lg:bg-transparent lg:p-0"
+    class="absolute right-0 top-full z-50 flex hidden w-full flex-col items-end bg-accent-900 p-2 lg:relative lg:w-auto lg:bg-transparent lg:p-0"
   >
     {
       links.map((item) => (
@@ -99,14 +99,14 @@ let links = [
   }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script is:inline data-astro-rerun>
+  function initializeNav() {
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const hamburgerIcon = document.getElementById("hamburger-icon");
     const closeIcon = document.getElementById("close-icon");
     const currentPage = document.getElementById("currentPage");
-
+    const navLinks = navMenu.querySelectorAll("a");
     const toggleMenu = () => {
       const isHidden = navMenu.classList.toggle("hidden");
       menuToggle.setAttribute("aria-expanded", !isHidden);
@@ -129,9 +129,31 @@ let links = [
       currentPage.textContent = pageName === "index" ? "home" : pageName;
     };
 
+    const closeMenuOnLinkClick = () => {
+      if (window.innerWidth < 1024) {
+        navMenu.classList.add("hidden");
+        menuToggle.setAttribute("aria-expanded", false);
+        hamburgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      }
+    };
+
     menuToggle.addEventListener("click", toggleMenu);
     window.addEventListener("resize", handleResize);
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        setPageName();
+        closeMenuOnLinkClick();
+      });
+    });
     setPageName();
     handleResize();
-  });
+  }
+
+  // // Initialize the nav on initial load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeNav);
+  } else {
+    initializeNav();
+  }
 </script>
