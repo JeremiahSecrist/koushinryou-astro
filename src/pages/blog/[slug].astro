@@ -2,6 +2,7 @@
 // Import required modules and types
 import BlogPost from "../../layouts/BlogPost.astro";
 import { wpquery } from "../../data/wordpress";
+import Newletter from "../../components/Newletter.astro";
 
 export async function getStaticPaths() {
   const data = await wpquery({
@@ -39,18 +40,23 @@ export async function getStaticPaths() {
 
   return data.posts.nodes.map((post: any) => {
     return {
-      params: { slug: post.slug }, 
-      props: { post }, 
+      params: { slug: post.slug },
+      props: { post },
     };
   });
 }
-const tags = [
-  ""
-]
+const tags = [""];
 // Get the props from Astro
 const { post } = Astro.props;
 ---
 
-<BlogPost title={post.title} tags={post.tags}>
+<BlogPost
+  title={post.title}
+  tags={post.tags}
+  mainimage={(!(post.featuredImage === null) &&
+    post.featuredImage.node.mediaItemUrl) ||
+    "https://imgix.cosmicjs.com/76185310-2eb4-11ed-9dcf-4f97d8f41281-simple-photo.jpg?w=1200&auto=format,compression"}
+>
   <Fragment set:html={post.content} />
+  <Newletter class="hidden"/>
 </BlogPost>
