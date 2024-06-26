@@ -1,5 +1,6 @@
 ---
 import HoursHud from "../components/HoursHud.astro";
+const BASE_URL = import.meta.env.BASE_URL;
 ---
 
 <footer class="bg-background-900">
@@ -34,8 +35,8 @@ import HoursHud from "../components/HoursHud.astro";
                 href="/contact.html"
                 class="text-gray-100 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
               >
-                Career</a
-              >
+                Career
+              </a>
             </div>
             <div>
               <a
@@ -55,7 +56,7 @@ import HoursHud from "../components/HoursHud.astro";
           <nav class="items-left flex flex-col gap-4">
             <div>
               <a
-                href="/contact.html"
+                href=`${BASE_URL}/contact`
                 class="text-gray-100 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
               >
                 Contact</a
@@ -63,7 +64,7 @@ import HoursHud from "../components/HoursHud.astro";
             </div>
             <div>
               <a
-                href="/faq.html"
+                href=`${BASE_URL}/faq.html`
                 class="text-gray-100 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
                 >FAQ</a
               >
@@ -105,7 +106,7 @@ import HoursHud from "../components/HoursHud.astro";
                 href="https://www.facebook.com/people/Koushinryou/100027534056280/"
                 class="text-gray-100 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
               >
-                <img src="assets/facebook.svg" class="size-5" />
+                <img src=`${BASE_URL}/assets/facebook.svg` class="size-5" />
               </a>
             </div>
             <div>
@@ -113,7 +114,7 @@ import HoursHud from "../components/HoursHud.astro";
                 href="https://www.instagram.com/koushinryoujax/"
                 class="text-gray-100 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
               >
-                <img src="assets/instagram.svg" class="size-5" />
+                <img src=`${BASE_URL}/assets/instagram.svg` class="size-5" />
               </a>
             </div>
             <div
@@ -121,7 +122,7 @@ import HoursHud from "../components/HoursHud.astro";
               onclick="copyText()"
             >
               <object
-                data="assets/email.svg"
+                data=`${BASE_URL}/assets/email.svg`
                 class="size-5 fill-transparent stroke-white"></object>
             </div>
 
@@ -144,7 +145,7 @@ import HoursHud from "../components/HoursHud.astro";
   </div>
 </div>
 
-<script>
+<script is:inline data-astro-rerun>
   function copyText() {
     const copyText = document.getElementById("copyTarget").innerText;
     navigator.clipboard.writeText(copyText).then(
