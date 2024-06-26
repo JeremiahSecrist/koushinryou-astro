@@ -33,29 +33,30 @@ import Hiring from "../components/forms/Hiring.astro";
     </div>
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    function initializeTabs() {
       function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.querySelectorAll(".tabs a");
+        const tabcontent = document.querySelectorAll(".tab-content");
+        tabcontent.forEach((content) => (content.style.display = "none"));
+
+        const tablinks = document.querySelectorAll(".tabs a");
         tablinks.forEach((link) => {
-          link.className = link.className.replace(" bg-background-800", "");
+          link.classList.remove("bg-background-800");
         });
+
         document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " bg-background-800";
+        evt.currentTarget.classList.add("bg-background-800");
       }
 
       const tabLinks = document.querySelectorAll(".tabs a");
       tabLinks.forEach((link) => {
-        link.addEventListener("click", function(evt) {
-          evt.preventDefault(); // Prevent default anchor behavior
+        link.addEventListener("click", function (evt) {
+          evt.preventDefault();
           const tabName = this.getAttribute("data-tab");
           openTab(evt, tabName);
         });
       });
-    });
+    }
+    document.addEventListener("DOMContentLoaded", initializeTabs);
+    // document.addEventListener("astro:page-load", initializeTabs);
   </script>
 </Default>
