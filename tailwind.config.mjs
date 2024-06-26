@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const BASE_URL = "koushinryou-astro";
 const defaultTheme = require("tailwindcss/defaultTheme");
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -8,7 +9,7 @@ export default {
         sans: ['"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
-        "jp-waves": "url('/assets/pattern.svg')",
+        "jp-waves": "url('/koushinryou-astro/assets/pattern.svg')",
       },
       colors: {
         text: {
