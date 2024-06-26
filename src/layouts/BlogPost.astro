@@ -1,54 +1,42 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-
-import Header from "../components/Header.astro";
-import Newletter from "../components/Newletter.astro";
-const { title, tags, mainimage } = Astro.props;
+import Default from "./Default.astro";
+const {
+  title,
+  tags,
+  mainimage = "https://imgix.cosmicjs.com/76185310-2eb4-11ed-9dcf-4f97d8f41281-simple-photo.jpg?w=1200&auto=format,compression",
+} = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <div
-        class="mx-auto h-64 max-w-5xl transition-all delay-75 duration-300 ease-in-out md:h-72 lg:h-96"
-      >
-        <img
-          src="https://imgix.cosmicjs.com/76185310-2eb4-11ed-9dcf-4f97d8f41281-simple-photo.jpg?w=1200&auto=format,compression"
-          alt="Featured Blog Post"
-          class="h-full w-full rounded-b-md object-cover object-center backdrop-blur-xl"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-      <div
-        class="relative z-10 -m-8 mx-auto max-w-xs rounded-md bg-stone-500 p-4 text-gray-300 transition-all delay-75 duration-300 ease-in-out sm:max-w-2xl"
-      >
-        <h1 class="font-sans text-2xl capitalize">{title}</h1>
-        <p>3m</p>
-        <ul class="mt-2 flex flex-wrap gap-1">
-          {
-            tags.nodes.map((name) => (
-              <li class="rounded-md bg-amber-600 px-2 text-base font-bold capitalize tracking-tight text-white shadow transition">
-                {name.name}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <section
-        class="prose prose-neutral mx-auto -mt-24 h-auto rounded bg-accent-800 p-6 pt-32 text-slate-100 transition-all delay-75 duration-300 ease-in-out dark:prose-invert prose-headings:capitalize md:max-w-3xl"
-      >
-        <slot />
-      </section>
-    </main>
-    <Newletter />
-    <Footer />
-  </body>
-</html>
+<Default>
+  <div
+    class="mx-auto aspect-video max-w-screen-lg transition-all delay-75 duration-300 ease-in-out"
+  >
+    <img
+      src={mainimage}
+      alt="Featured Blog Post"
+      class="h-full w-full rounded-b-xl object-cover object-center backdrop-blur-xl" 
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div
+    class="relative z-10 -m-8 mx-auto max-w-xs rounded-md bg-stone-500 p-4 text-gray-300 transition-all delay-75 duration-300 ease-in-out sm:max-w-2xl"
+  >
+    <h1 class="font-sans text-2xl capitalize">{title}</h1>
+    <p>3m</p>
+    <ul class="mt-2 flex flex-wrap gap-1">
+      {
+        tags.nodes.map((name) => (
+          <li class="rounded-md bg-amber-600 px-2 text-base font-bold capitalize tracking-tight text-white shadow transition">
+            {name.name}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <section
+    class="prose prose-neutral mx-auto -mt-24 h-auto rounded bg-accent-800 p-6 pt-32 text-slate-100 transition-all delay-75 duration-300 ease-in-out dark:prose-invert prose-headings:capitalize md:max-w-3xl"
+  >
+    <slot />
+  </section>
+</Default>
