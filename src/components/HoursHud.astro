@@ -17,7 +17,7 @@ const data = [
           {item.day}
         </div>
         <div
-          class={`h-full ${item.open ? "bg-teal-700 text-green-300" : "bg-orange-700 text-orange-300"} text-lg`}
+          class={`h-full ${item.open ? "bg-teal-700 text-green-300" : "bg-orange-700 text-orange-300"} text-md md:text-lg`}
         >
           <span class="block">{item.open ? "Open" : "Closed"}</span>
           {item.open && (
