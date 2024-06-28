@@ -8,4 +8,5 @@ export default defineConfig({
   site: "https://jeremiahsecrist.github.io",
   base: "koushinryou-astro",
   integrations: [mdx(), sitemap(), tailwind()],
+  prefetch: true,
 });
