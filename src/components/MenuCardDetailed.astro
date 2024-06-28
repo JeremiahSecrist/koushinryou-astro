@@ -17,58 +17,125 @@ const {
 ---
 
 <div
-  class="w-svh relative z-0 min-h-svh overflow-hidden bg-slate-300 sm:m-20 sm:min-h-96 sm:rounded-lg sm:shadow-lg"
+  class="w-svh sm:max duration-250 relative z-0 min-h-[90lvh] overflow-hidden bg-slate-300 transition-all delay-75 ease-in-out sm:m-10 sm:rounded-lg sm:shadow-lg"
 >
   <div
-    class="absolute z-10 h-64 w-full bg-amber-100 shadow-inner sm:h-full sm:w-[50%]"
+    class="absolute z-10 h-64 w-full bg-amber-100 shadow-inner sm:h-full sm:w-[60%]"
   >
-    <ArrowUturnLeft
+    <svg
+      id="backButton"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
       class="absolute left-0 ml-4 mt-3 h-7 w-7 rounded-lg bg-slate-700/50 p-1 text-white backdrop-blur-md"
-    />
-    <ArrowsPointingOut
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      ></path>
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
       class="absolute right-0 mr-4 mt-3 h-7 w-7 rounded-lg bg-slate-700/50 p-1 text-white backdrop-blur-md"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+      ></path>
+    </svg>
+
+    <img
+      class="h-full w-full object-cover"
+      src="https://popmenucloud.com/cdn-cgi/image/width%3D2400%2Cheight%3D2400%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/skfezarw/3f6d0e4c-87c3-43d0-8d2f-e59917c44c95.JPG"
+      alt="sando image"
     />
-    <img class="h-full w-full object-cover" src={url} alt="sando image" />
   </div>
   <div
-    class="absolute z-20 mt-60 flex h-96 w-full snap-y scroll-pb-20 justify-center overflow-auto rounded-xl bg-white pt-5 sm:right-0 sm:mt-0 sm:w-[50%] sm:rounded-none sm:p-4"
+    class="absolute z-20 mt-60 flex h-full w-full snap-y scroll-pb-20 justify-start overflow-auto rounded-xl bg-white pl-10 pt-5 sm:right-0 sm:mt-0 sm:w-[40%] sm:rounded-none sm:p-4"
   >
     <div class="mb-10 h-fit snap-start pb-2">
-      <span class="text-lg underline underline-offset-4">{itemNameEn}</span>
-      <div class="mt-2 flex flex-none flex-wrap gap-x-2 gap-y-2 text-sm">
-        {
-          !inStock && (
-            <span class="rounded bg-red-600 p-1 uppercase tracking-tight text-red-300">
-              out
-            </span>
-          )
-        }
-        <span class="h-fit rounded bg-green-700 p-1 text-green-300"
-          >{itemPrice}</span
-        >
-        {
-          special && (
-            <span class="rounded bg-yellow-600 p-1 uppercase tracking-tight text-yellow-200">
-              weekly special
-            </span>
-          )
-        }
-        {
-          spiceLevel > 0 && (
-            <span class="rounded bg-red-600 p-1 uppercase tracking-tight text-red-300">
-              spicy
-            </span>
-          )
-        }
-      </div>
-      <p
-        class="mt-4 max-h-fit max-w-72 rounded bg-slate-100/50 p-2 indent-4 outline outline-slate-500"
+      <span class="text-2xl font-medium underline underline-offset-4"
+        >Matcha Cookie Cream Sando</span
       >
-        {itemDescriptionEn}
-        <span class="mt-2 block">
-          {itemDescriptionJp}
-        </span>
-      </p>
+      <div class="mt-2 flex flex-none flex-wrap gap-x-2 gap-y-2 pl-1.5 text-sm">
+        <span class="h-fit rounded bg-green-700 p-1 text-green-300">$9.99</span>
+        <span
+          class="rounded bg-red-600 p-1 uppercase tracking-tight text-red-300"
+          >out</span
+        >
+        <span
+          class="rounded bg-yellow-600 p-1 uppercase tracking-tight text-yellow-200"
+          >weekly special</span
+        >
+      </div>
+      <div class="mt-4">
+        <button id="englishBtn" class="rounded-t-xl bg-slate-200 p-2">EN</button
+        >
+        <button id="japaneseBtn" class="rounded-t-xl bg-slate-200 p-2"
+          >JP</button
+        >
+        <div
+          class="max-h-fit max-w-96 rounded bg-slate-100/50 p-2 indent-4 outline outline-slate-500"
+        >
+          <p class="" id="EN">
+            Homemade vanilla bean whipped cream &amp; chocolate cookie pieces
+            sprinkled with matcha, stuffed in Japanese milk bread "shokupan".
+          </p>
+          <p class="hidden" id="JP">
+            自家製バニラビーンズ・ホイップクリームと抹茶をまぶしたチョコレート・クッキーを、日本のミルクパン「ショクパン」に詰めたもの。
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<script>
+  // JavaScript code to handle language toggle buttons
+  function enjpbtn() {
+    // Get language buttons
+    const englishBtn = document.querySelector("#englishBtn");
+    const japaneseBtn = document.querySelector("#japaneseBtn");
+    const backButton = document.querySelector("#backButton");
+    // Get language description elements
+    const englishDesc = document.querySelector("#EN");
+    const japaneseDesc = document.querySelector("#JP");
+
+    const modalContainer = document.getElementById("modalContainer");
+    // Initially hide Japanese description
+    japaneseDesc.classList.add("hidden");
+
+    // Function to toggle between English and Japanese descriptions
+    function toggleLanguage(language) {
+      if (language === "english") {
+        englishDesc.classList.remove("hidden");
+        japaneseDesc.classList.add("hidden");
+      } else if (language === "japanese") {
+        englishDesc.classList.add("hidden");
+        japaneseDesc.classList.remove("hidden");
+      }
+    }
+
+    // Event listeners for language buttons
+    englishBtn.addEventListener("click", function () {
+      toggleLanguage("english");
+    });
+
+    japaneseBtn.addEventListener("click", function () {
+      toggleLanguage("japanese");
+    });
+    backButton.addEventListener("click", function () {
+      modalContainer.style.display = "none";
+    });
+  }
+  document.addEventListener("DOMContentLoaded", enjpbtn);
+  document.addEventListener("astro:page-load", enjpbtn);
+</script>
