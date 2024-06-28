@@ -1,0 +1,63 @@
+---
+const { title = "default" } = Astro.props;
+---
+
+<details class="border-b">
+  <summary
+    class="faq-question flex items-center justify-between bg-background-700 px-4 py-4 text-primary-300"
+  >
+    <span class="font-semibold">{title}</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </summary>
+  <p class="bg-background-800 p-4 text-white">
+    <slot />
+  </p>
+</details>
+<style>
+  details {
+    position: relative;
+    overflow: hidden;
+  }
+
+  summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  details summary svg {
+    transition: transform 0.3s ease;
+  }
+
+  details p {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  details[open] p {
+    max-height: 200px; /* Adjust according to the content size */
+    opacity: 1;
+  }
+</style>
