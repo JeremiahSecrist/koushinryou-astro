@@ -7,40 +7,30 @@ import Sizzle from "../components/Sizzle.astro";
 import Specials from "../components/Specials.astro";
 import HoursCommon from "../components/HoursCommon.astro";
 import Newletter from "../components/Newletter.astro";
---- 
+import Default from "../layouts/Default.astro";
+---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="bg-background-900">
-    <Header />
-    <main>
-      <Sizzle>
-        <div
-          class="prose prose-sm *:text-slate-300 prose-headings:text-primary-300 prose-p:pl-1"
-        >
-          <h2>Our Passion</h2>
-          <p>
-            Discover the untold stories behind our passion for quality and
-            innovation. Dive into the journey of craftsmanship, where every
-            detail is meticulously crafted to bring joy and inspiration to your
-            life.
-          </p>
-          <h2>Our Mission</h2>
-          <p>
-            Join us in exploring the intersection of tradition and modernity,
-            where ancient techniques meet cutting-edge technology. Together,
-            let's embark on a voyage of creativity and imagination, shaping the
-            future one innovation at a time.
-          </p>
-        </div>
-      </Sizzle>
-      <Specials />
-      <HoursCommon />
-      <Newletter />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Default>
+  <Sizzle>
+    <div
+      class="prose prose-sm *:text-slate-300 prose-headings:text-primary-300 prose-p:pl-1"
+    >
+      <h2>Our Passion</h2>
+      <p>
+        Discover the untold stories behind our passion for quality and
+        innovation. Dive into the journey of craftsmanship, where every detail
+        is meticulously crafted to bring joy and inspiration to your life.
+      </p>
+      <h2>Our Mission</h2>
+      <p>
+        Join us in exploring the intersection of tradition and modernity, where
+        ancient techniques meet cutting-edge technology. Together, let's embark
+        on a voyage of creativity and imagination, shaping the future one
+        innovation at a time.
+      </p>
+    </div>
+  </Sizzle>
+  <Specials />
+  <HoursCommon />
+  <Newletter />
+</Default>
