@@ -13,14 +13,16 @@ import MenuCard from "./MenuCard.astro";
         Specials
       </h1>
     </div>
-    <div class="flex flex-wrap place-content-evenly gap-4 p-8 *:max-h-96 *:aspect-square">
+    <div
+      class="flex flex-wrap place-content-evenly gap-4 p-8 *:aspect-square *:max-h-96"
+    >
       <MenuCard
         url="/images/kotsudonSando.png"
         spiceLevel="0"
         itemPrice="$10.99"
         itemNameEn="Kotsudon Sando"
         itemLikes="10"
-        place-content-center
+        inStock={false}
       />
       <MenuCard
         url="/images/akaMisoSoup.png"
