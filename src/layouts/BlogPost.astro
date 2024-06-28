@@ -9,20 +9,20 @@ const {
 
 <Default>
   <div
-    class="mx-auto aspect-video max-w-screen-lg transition-all delay-75 duration-300 ease-in-out"
+    class="mx-auto aspect-[1.5/1] sm:[2/1] max-w-screen-lg transition-all delay-75 duration-300 ease-in-out md:aspect-[3/1]"
   >
     <img
       src={mainimage}
       alt="Featured Blog Post"
-      class="h-full w-full rounded-b-xl object-cover object-center backdrop-blur-xl" 
+      class="h-full w-full rounded-b-xl object-cover object-center backdrop-blur-xl"
       loading="eager"
       decoding="async"
     />
   </div>
   <div
-    class="relative z-10 -m-8 mx-auto max-w-xs rounded-md bg-stone-500 p-4 text-gray-300 transition-all delay-75 duration-300 ease-in-out sm:max-w-2xl"
+    class="relative z-10 -m-8 mx-auto rounded-md bg-background-700 p-4 text-gray-300 transition-all delay-75 duration-300 ease-in-out sm:max-w-screen-lg"
   >
-    <h1 class="font-sans text-2xl capitalize">{title}</h1>
+    <h1 class="font-sans text-2xl capitalize text-primary-500">{title}</h1>
     <p>3m</p>
     <ul class="mt-2 flex flex-wrap gap-1">
       {
