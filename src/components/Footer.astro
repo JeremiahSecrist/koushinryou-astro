@@ -121,20 +121,23 @@ const BASE_URL = import.meta.env.BASE_URL;
               class="cursor-pointer text-gray-100 transition duration-100 hover:text-gray-500 active:text-gray-600"
               onclick="copyText()"
             >
-              <object
-                data=`${BASE_URL}/assets/email.svg`
-                class="size-5 fill-transparent stroke-white"></object>
+              <img
+                src=`${BASE_URL}/assets/email.svg`
+                class="size-5"
+                id="copyIcon"
+                alt="Copy email"
+              />
+              <span id="emailText" class="hidden">Copied</span>
             </div>
-
-            <span id="emailText" class="hidden">Copied</span>
-            <div id="copyTarget" class="hidden">Koushinryou22@gmail.com</div>
           </nav>
+          <div id="copyTarget" class="hidden">Koushinryou22@gmail.com</div>
         </div>
       </div>
-      <!-- nav - end -->
     </div>
+    <!-- nav - end -->
   </div>
 </footer>
+
 <div class="bg-background-950">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
     <div class="items-left flex justify-between gap-4 py-8">
@@ -145,23 +148,20 @@ const BASE_URL = import.meta.env.BASE_URL;
   </div>
 </div>
 
-<script is:inline data-astro-rerun>
+<script is:inline>
   function copyText() {
     const copyText = document.getElementById("copyTarget").innerText;
     navigator.clipboard.writeText(copyText).then(
       function () {
         console.log("Copied to clipboard");
-        const copyButton = document.getElementById("copyTarget");
-        copyButton.innerText = "Copied";
         const copyIcon = document.getElementById("copyIcon");
         const emailText = document.getElementById("emailText");
-        copyIcon.classList.add("hidden"); // Hide the SVG
+        copyIcon.classList.add("hidden"); // Hide the icon
         emailText.classList.remove("hidden"); // Show the "Copied" text
         setTimeout(function () {
-          copyButton.innerText = "Koushinryou22@gmail.com";
-          copyIcon.classList.remove("hidden"); // Show the SVG
+          copyIcon.classList.remove("hidden"); // Show the icon
           emailText.classList.add("hidden"); // Hide the "Copied" text
-        }, 2000); // Change back to original text after 2 seconds
+        }, 2000); // Change back to original state after 2 seconds
       },
       function (err) {
         console.error("Failed to copy: ", err);
