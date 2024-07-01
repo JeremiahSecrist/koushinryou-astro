@@ -1,6 +1,6 @@
 ---
 const data = [
-  { day: "Monday", open: false, reason: "Holiday" },
+  { day: "Today", open: false, reason: "Holiday" },
   { day: "Tuesday", open: true },
   { day: "Wednesday", open: false },
   { day: "Thursday", open: false, reason: "Holiday" },
@@ -17,14 +17,14 @@ const data = [
           {item.day}
         </div>
         <div
-          class={`h-full ${item.open ? "bg-teal-700 text-green-300" : "bg-orange-700 text-orange-300"} text-md md:text-lg`}
+          class={`h-full ${item.open ? "bg-teal-700 text-green-300" : "bg-orange-700 text-orange-300"} text-sm md:text-lg`}
         >
           <span class="block">{item.open ? "Open" : "Closed"}</span>
           {item.open && (
-            <span class="pr-3 text-sm font-medium italic">9am ~ 5pm</span>
+            <span class="pr-3 text-xs  italic">9am ~ 5pm</span>
           )}
           {!item.open && item.reason && (
-            <span class="block text-sm">{item.reason}</span>
+            <span class="block text-xs">{item.reason}</span>
           )}
         </div>
       </div>
